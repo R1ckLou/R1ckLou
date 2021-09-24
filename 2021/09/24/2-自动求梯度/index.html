@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Lou&#39;s Blog</title>
+  <title>PyTorch深度学习（二） | Lou&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -63,7 +63,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -160,49 +160,12 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2><span>Think of nothing</span>,<span>think of wind</span>.</h2>
-                        <br>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <br>
-                        <p>什么都别想，去想想风吧。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
+      
 <section id="intro">
     <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/09/24/2-自动求梯度/">PyTorch深度学习（二）</a></h3>
-                    <span>
-                        <span class="post-meta">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
       <time datetime="2021-09-24T15:30:36.000Z" itemprop="datePublished">
           2021-09-24
       </time>
@@ -213,104 +176,55 @@
     
     
 </span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        关于上节Tensor的自动梯度合<br><br>关于梯度的定义以及autograd用法等..
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/09/24/2-自动求梯度/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
+                <h1>PyTorch深度学习（二）</h1>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/09/20/1-Tensor基本使用/">PyTorch深度学习（一）</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-09-20T05:19:52.000Z" itemprop="datePublished">
-          2021-09-20
-      </time>
-    
-    
-    | 
-    <a href='/tags/PyTorch/'>PyTorch</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        Tensor基本使用<br><br>《动手学深度学习（PyTorch版）》学习笔记，内容是PyTorch中的Tensor学习..
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/09/20/1-Tensor基本使用/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h4 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h4><h5 id="1）基本概念"><a href="#1）基本概念" class="headerlink" title="1）基本概念"></a>1）基本概念</h5><p><code>方向导数：</code>是一个数；反映的是f(x,y)在P0点沿方向v的变化率。<br><code>偏导数：</code>是多个数（每元有一个）；是指多元函数沿坐标轴方向的方向导数，因此二元函数就有两个偏导数。<br><code>偏导函数：</code>是一个函数；是一个关于点的偏导数的函数。</p>
+<p><code>梯度：</code>是一个向量；每个元素为函数对一元变量的偏导数；它既有大小（其大小为最大方向导数），也有方向。</p>
+<blockquote>
+<p><code>梯度是一个向量既有大小，也有方向。</code><br>函数z=f(x,y)在点P0处的梯度方向<code>是函数变化率(即方向导数)最大的方向。</code><br><strong><code>梯度的方向就是函数f(x,y)在这点增长最快的方向，梯度的模为方向导数的最大值。</code></strong><br><img src="/2021/09/24/2-%E8%87%AA%E5%8A%A8%E6%B1%82%E6%A2%AF%E5%BA%A6/1.jpg" alt="梯度定义"><br><img src="/2021/09/24/2-%E8%87%AA%E5%8A%A8%E6%B1%82%E6%A2%AF%E5%BA%A6/2.jpg" alt="梯度定义"></p>
+</blockquote>
+<h5 id="2）操作"><a href="#2）操作" class="headerlink" title="2）操作"></a>2）操作</h5><p><strong>requires_grad：</strong><br>在操作创建 <code>Tensor</code> 时，会有一个参数 <code> requires_grad =</code><br>在如果需要为张量计算梯度，则为True，否则为False。我们使用pytorch创建tensor时，可以指定requires_grad为True（默认为False）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">x = torch.ones(<span class="number">2</span>, <span class="number">2</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">tensor([[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]], requires_grad=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x.grad_fn)    <span class="comment">#None</span></span><br><span class="line">y = x + <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(y.grad_fn)    <span class="comment">#&lt;AddBackward0 object at 0x0000021EF188C808&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>requires_grad</code>属性是可以改变的，通过  <code>.requires_grad_()</code> 来用<code>in-place</code>的方式改变<code>requires_grad</code>属性：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.requires_grad_(<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(a.requires_grad) <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>grad_fn：</strong><br><code>grad_fn</code>用来记录变量是怎么来的，方便计算梯度，y = x*3,grad_fn记录了y由x计算的过程。</p>
+<p><strong>grad：</strong></p>
+<p>当执行完了<code>backward()</code>之后，通过<code>x.grad</code>查看x的梯度值。</p>
+<blockquote>
+<p>注意：grad在反向传播过程中是累加的(accumulated)，这意味着每一次运行反向传播，梯度都会累加之前的梯度，所以一般在反向传播之前需把梯度清零。<br><strong>这里我没仔细研究懂 留坑</strong></p>
+</blockquote>
+<h5 id="3）总结"><a href="#3）总结" class="headerlink" title="3）总结"></a>3）总结</h5><p><code>Tensor</code>是核心类，其中的<code>.require_grad</code>属性设置为<code>True</code>，它将开始追踪在其上的所有操作（这样就可以利用链式法则进行梯度传播了），不想被追踪就可以用 <code>.detach( ) </code>从追踪记录中分离出来。</p>
+<p>未写完。。明天写</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/09/18/hello-world/">Hello World</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-09-18T07:57:22.685Z" itemprop="datePublished">
-          2021-09-18
-      </time>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        第一篇博文，没啥可看的..
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/09/18/hello-world/">More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <nav class="pagination" role="pagination">
-          
-          
-        </nav>
+    
+    <a class="pull-right" href="/2021/09/20/1-Tensor%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+        PyTorch深度学习（一） →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24">
+<div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxy8sfo1tNIBRp70xWGivfGt-gzGzoHsz',
+        appKey: 'sQ78wmj5v09XgKzn2BQELv5x'
+    })
+</script></div>
     </div>
 </section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>既往不恋，当下不杂，未来不迎。</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
+
 
       
 <!-- ============================ Footer =========================== -->
