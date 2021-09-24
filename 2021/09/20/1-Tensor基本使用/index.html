@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2021 | Lou&#39;s Blog</title>
+  <title>PyTorch深度学习（一） | Lou&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -63,7 +63,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -160,80 +160,218 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2><span>Think of nothing</span>,<span>think of wind</span>.</h2>
-                        <br>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <br>
-                        <p>什么都别想，去想想风吧。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2021/09/20/1-Tensor基本使用/">PyTorch深度学习（一）</a></h4>
-                            
-                            <p><time datetime="2021-09-20T05:19:52.000Z"><a href="/2021/09/20/1-Tensor基本使用/">2021-09-20</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2021/09/18/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2021-09-18T07:57:22.685Z"><a href="/2021/09/18/hello-world/">2021-09-18</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-09-20T05:19:52.000Z" itemprop="datePublished">
+          2021-09-20
+      </time>
+    
+    
+    | 
+    <a href='/tags/PyTorch/'>PyTorch</a>
+    
+    
+</span>
+                <h1>PyTorch深度学习（一）</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h3 id="TyTorch深度学习-1–Tensor基本使用"><a href="#TyTorch深度学习-1–Tensor基本使用" class="headerlink" title="TyTorch深度学习 1–Tensor基本使用"></a>TyTorch深度学习 1–Tensor基本使用</h3><p><img src="/2021/09/20/1-Tensor%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/1.png" alt="图片"></p>
+<h4 id="1-创建"><a href="#1-创建" class="headerlink" title="1. 创建"></a>1. 创建</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tensor( sizes )</td>
+<td>基础构造函数</td>
+</tr>
+<tr>
+<td>tensor( data, )</td>
+<td>类似np.array的构造函数</td>
+</tr>
+<tr>
+<td>one( sizes )</td>
+<td>全1的Tensor</td>
+</tr>
+<tr>
+<td>zeros( sizes )</td>
+<td>全0的Tensor</td>
+</tr>
+<tr>
+<td>eye( size )</td>
+<td>对角线为1，其他为0</td>
+</tr>
+<tr>
+<td>arange( s, e, step )</td>
+<td>从s到e，步长为step</td>
+</tr>
+<tr>
+<td>linspace( s, e, steps )</td>
+<td>从s到e，均匀切分成steps份</td>
+</tr>
+<tr>
+<td>rand/randn( *sizes )</td>
+<td>均匀/标准分布</td>
+</tr>
+<tr>
+<td>normal( mean, std )</td>
+<td>正态分布</td>
+</tr>
+<tr>
+<td>uniform( from, to )</td>
+<td>均匀分布</td>
+</tr>
+<tr>
+<td>randperm( m )</td>
+<td>随机排列</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>这些创建方法都可以在创建的时候指定数据类型 <code>dtype</code>和存放 <code>device(cpu/gpu)</code>。</p>
+</blockquote>
+<p>使用时发现，函数传参中的 <code>size</code>  可以传入<code>Tensor</code>。例如<code>x</code> 为（5，3）的 <code>Tensor</code> 。设置一个全0的（5，3）可以直接　<code>zeros( x )</code>　从而得到。</p>
+<h4 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h4><h6 id="1）-算术操作"><a href="#1）-算术操作" class="headerlink" title="1） 算术操作"></a>1） 算术操作</h6><p><code>设 x , y 分别是一个Tensor</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 加法</span><br><span class="line"><span class="number">1.</span> x+y　<span class="number">2.</span> torch.add( x, y )　</span><br><span class="line"><span class="number">3.</span> y.add_( x )<span class="comment">#inplace方法</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Pytorch操作inplace版本都有’ _ ‘,例如 <code>x.cop_(y) , x.t_( )</code></p>
+</blockquote>
+<h6 id="2）-索引操作"><a href="#2）-索引操作" class="headerlink" title="2） 索引操作"></a>2） 索引操作</h6><p>索引出来的数据跟元数据共享内存。</p>
+<blockquote>
+<p>索引操作不会开辟新内存</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>常用索引函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index_select(input,    dim,    index)</td>
+<td>在指定维度dim上选取，比如选取某些行、某些列</td>
+</tr>
+<tr>
+<td>masked_select(input,    mask)</td>
+<td>例子如上，a[a&gt;0]，使用ByteTensor进行选取</td>
+</tr>
+<tr>
+<td>nonzero(input)</td>
+<td>获取非0元素的下标</td>
+</tr>
+<tr>
+<td>gather(input, dim, index)</td>
+<td>根据index，在dim维度上选取数据，输出的size与index一样</td>
+</tr>
+</tbody></table>
+<h6 id="3）-变形"><a href="#3）-变形" class="headerlink" title="3） 变形"></a>3） 变形</h6><p>用　<code>view()</code>　来改变 <code>Tensor</code> 的形状。</p>
+<blockquote>
+<p><strong>注意</strong>：当使用　<code>view()</code>　时，新 <code>Tensor</code> 与旧 <code>Tensor</code> 共享内存，它将返回一个具有新形状的张量。返回的张量将与原始张量共享底层数据。<br>虽然共享<code>data</code>，但是依然是新的 <code>Tensor</code> （因为新<code>Tensor</code>除了包含<code>data</code>外还有一些其他属性），例如二者<code>id</code>(内存地址)不一样。<br><strong>如果</strong>想　<code>view()</code>　得到一个真正的副本（重塑目标张量）,方法有两种</p>
+<ul>
+<li><code>reshape()</code><br>但是<code>reshape()</code>不施加任何连续性约束，但也不保证数据共享。新张量可能是原始张量的视图，也可能完全是一个新张量。 故不推荐使用。<br>　<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49643225/whats-the-difference-between-reshape-and-view-in-pytorch">关于view()以及reshape()的区别，详情</a>
+　　</li>
+<li><code>原始张量 . clone()</code>然后进行<code> view()</code><br><code>clone() </code>　是复制一个副本。使用 <code>clone() </code>    还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源 Tensor    。</li>
+</ul>
+</blockquote>
+<h4 id="3-常用函数补充"><a href="#3-常用函数补充" class="headerlink" title="3. 常用函数补充"></a>3. 常用函数补充</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>item</td>
+<td>使一个标量变成 Python number</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>对角线之和</td>
+</tr>
+<tr>
+<td>diag</td>
+<td>对角线元素</td>
+</tr>
+<tr>
+<td>triu/tril</td>
+<td>矩阵的上三角/下三角，可指定偏移量</td>
+</tr>
+<tr>
+<td>mm/bmm</td>
+<td>矩阵乘法 / batch的矩阵乘法</td>
+</tr>
+<tr>
+<td>addmm/addbmm/addmv/addr/baddbmm..</td>
+<td>矩阵运算</td>
+</tr>
+<tr>
+<td>t</td>
+<td>转置</td>
+</tr>
+<tr>
+<td>dot/cross</td>
+<td>内积/外积</td>
+</tr>
+<tr>
+<td>inverse</td>
+<td>求逆矩阵</td>
+</tr>
+<tr>
+<td>svd</td>
+<td>奇异值分解</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>众多函数详情在<a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/tensors.html">官方文档</a>。</p>
+</blockquote>
+<h4 id="4-广播机制"><a href="#4-广播机制" class="headerlink" title="4. 广播机制"></a>4. 广播机制</h4><p>两个不同的<code>Tensor</code>按元素运算时，可能出发广播（broadcasting）机制，先适当复制元素使这两个 Tensor    形状相同后再按元素运算。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.arange(<span class="number">1</span>,<span class="number">3</span>).view(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span> ( x )</span><br><span class="line">y = torch.arange(<span class="number">1</span>,<span class="number">4</span>).view(<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span> ( y )</span><br><span class="line"><span class="built_in">print</span> ( x + y )</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tensor([[<span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line">tensor([[<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>],</span><br><span class="line">        [<span class="number">3</span>]])</span><br><span class="line">tensor([[<span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">        [<span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        [<span class="number">4</span>, <span class="number">5</span>]])</span><br></pre></td></tr></table></figure>
+<p>由于<code>x</code>和<code>y</code>分别是1行2列和3行1列的，如果计算<code>x+y</code>，那么 <code>x</code>    中第一行的2个元素被广播（复制）到了第二行和第三行，而 <code>y</code>     中第一列的3个元素被广播（复制）到了第二列。如此，就可以对2个3行2列的矩阵按元素相加。</p>
+<h4 id="5-Tensor和Numpy相互转换"><a href="#5-Tensor和Numpy相互转换" class="headerlink" title="5. Tensor和Numpy相互转换"></a>5. Tensor和Numpy相互转换</h4><p>使用 <code>from_numpy()</code> 将NumPy数组转换成 <code>Tensor</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a)</span><br></pre></td></tr></table></figure>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>既往不恋，当下不杂，未来不迎。</p>
+
+<blockquote>
+<p><strong>注意</strong>：<br>所有在CPU上的 <code>Tensor</code>(除了<code>CharTensor</code>)都支持与NumPy数组相互转换。<br>还有一种方法就是直接用 <code>torch.tensor()</code> 将NumPy数组转换成 <code>Tensor</code>，需要注意的是该方法总是会进行数据拷贝，返回的  <code>Tensor</code>    和原来的数据不再共享内存。</p>
+</blockquote>
+<h4 id="6-Tensor-on-Gpu"><a href="#6-Tensor-on-Gpu" class="headerlink" title="6. Tensor on Gpu"></a>6. Tensor on Gpu</h4><p>用方法 <code>to()</code> 可以将 <code>Tensor </code> 在CPU和GPU之间相互移动</p>
+<blockquote>
+<p>注：具体看<a target="_blank" rel="noopener" href="https://github.com/chenyuntc/pytorch-book/blob/master/chapter3-Tensor%E5%92%8Cautograd/Tensor.ipynb">官方文档的这里</a></p>
+</blockquote>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2021/09/18/hello-world/">
+        Hello World →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24">
+<div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'lxy8sfo1tNIBRp70xWGivfGt-gzGzoHsz',
+        appKey: 'sQ78wmj5v09XgKzn2BQELv5x'
+    })
+</script></div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
