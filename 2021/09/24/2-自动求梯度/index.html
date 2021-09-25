@@ -199,7 +199,7 @@
 <p>注意：grad在反向传播过程中是累加的(accumulated)，这意味着每一次运行反向传播，梯度都会累加之前的梯度，所以一般在反向传播之前需把梯度清零。<br><strong>这里我没仔细研究懂 留坑</strong></p>
 </blockquote>
 <h5 id="3）总结"><a href="#3）总结" class="headerlink" title="3）总结"></a>3）总结</h5><p><code>Tensor</code>是核心类，其中的<code>.require_grad</code>属性设置为<code>True</code>，它将开始追踪在其上的所有操作（这样就可以利用链式法则进行梯度传播了），不想被追踪就可以用 <code>.detach( ) </code>从追踪记录中分离出来。</p>
-<p>未写完。。明天写</p>
+<p>想要修改 <code>tensor</code> 的值，又不希望被 <code>autograd</code> 记录到（即不会影响反向传播），可以进行对 <code>Tesnor.data</code> 进行操作。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
