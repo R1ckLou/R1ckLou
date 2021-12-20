@@ -60,11 +60,7 @@
   
 
   <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --></head>
+</head>
 
 <!--
 <body class="post-template">
@@ -89,11 +85,13 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/PyTorch/" class="animsition-link">PyTorch<small>(3)</small></a></li>
+				    <li><a href="/categories/PyTorch/" class="animsition-link">PyTorch<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/日常/" class="animsition-link">日常<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/PyTorch/机器学习/" class="animsition-link">机器学习<small>(1)</small></a></li>
+				    <li><a href="/categories/PyTorch/机器学习/" class="animsition-link">机器学习<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/PyTorch/机器学习/深度学习/" class="animsition-link">深度学习<small>(1)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -186,31 +184,33 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h4><p>线性回归输出的是一个连续值，因此适用于回归问题。<br><strong>预测房价例子：</strong><br>设定面积为 $x_1$，房龄为 $x_2$，售出价格为 $y$ ，建立一个基于 $x_1$与 $x_2$输出 $y$ 的表达式叫做<strong>模型（model）</strong>，</p>
+      		<h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h4><p>线性回归输出的是一个连续值，因此适用于回归问题。<br><strong>预测房价例子：</strong><br>设定面积为 $ x_1 $，房龄为 $ x_2 $，售出价格为 $y$ ，建立一个基于 $x_1$与 $x_2$输出 $y$ 的表达式叫做<strong>模型（model）</strong>，</p>
 <blockquote>
-<p>$\widehat{y}$ = $x_1$$w_1$+$x_2$$w_2$+b</p>
+<p>$\widehat{y}$ = $ x_1 $ $ w_1 $+$ x_2 $ $ w_2 $+b</p>
 </blockquote>
 <p>$w_1$、$w_2$是权重（weight），$b$是偏差（bias），且均为标量。它们是线性回归模型的参数（parameter），$\widehat{y}$ 是对价格$y$的估计预测（可有片惨）。</p>
 <h4 id="2，模型训练"><a href="#2，模型训练" class="headerlink" title="2，模型训练"></a>2，模型训练</h4><h5 id="1）熟练数据"><a href="#1）熟练数据" class="headerlink" title="1）熟练数据"></a>1）熟练数据</h5><p>在机器学习术语中，训练用数据集叫做<strong>训练数据集（training data set）</strong>或者<strong>训练集（training set）</strong>，一个房子被称为一个<strong>样本（sample）</strong>，其真实售价叫做<strong>标签（label）</strong>，用来预测标签的两个因素叫做<strong>特征（feature）</strong>。特征用来表征样本特点。</p>
-<h5 id="2）损失函数"><a href="#2）损失函数" class="headerlink" title="2）损失函数"></a>2）损失函数</h5><p>此模型评估索引定义为：<br>$\lambda^i (w_1,w_2,b)=$$\frac{1}{2}$$(\widehat{y}^i-y^i)^2$</p>
+<h5 id="2）损失函数"><a href="#2）损失函数" class="headerlink" title="2）损失函数"></a>2）损失函数</h5><p>此模型评估索引定义为：<br>$\lambda^i (w_1,w_2,b)=<script type="math/tex">\frac{1}{2}</script>(\widehat{y}^i-y^i)^2$</p>
 <blockquote>
 <p>$\frac{1}{2}$ 是因为求导后平方项会变成1。目的是运算简单。</p>
 </blockquote>
 <p>机器学习中衡量误差的叫做<strong>损失函数（lost function）</strong>，这里使用的平方误差函数被称为<strong>平方误差（squre loss）</strong>。</p>
 <h5 id="3）优化算法"><a href="#3）优化算法" class="headerlink" title="3）优化算法"></a>3）优化算法</h5><p>当模型和损失函数简单，误差最小可以用公式表达出的此类解叫做<strong>解析解（analytical solution）</strong>，只能通过优化算法进行迭代的解法叫做<strong>数值解（numerical solution）</strong>。</p>
-<p>这个线性回归模型的每个参数做如下迭代：<br><img src="/2021/09/25/PyTorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/%E5%87%BD%E6%95%B0%E8%BF%AD%E4%BB%A3.png" alt="函数迭代公式"></p>
+<p>这个线性回归模型的每个参数做如下迭代：<br><img src="/.com//函数迭代.png" alt="11"><br><!-- <img src="/2021/09/25/PyTorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/%E5%87%BD%E6%95%B0%E8%BF%AD%E4%BB%A3.png" class="" title="This is an example image"> —&gt;</p>
 <p>在上式中，$|B|$    代表每个小批量中的样本个数<strong>（批量大小，batch size）</strong>， $\eta$称作<strong>学习率（learning rate）</strong>并取正数。需要强调的是，这里的批量大小和学习率的值是人为设定的，并不是通过模型训练学出的，因此叫作<strong>超参数（hyperparameter）</strong>。我们通常所说的<strong>“调参”指的正是调节超参数</strong>，例如通过反复试错来找到超参数合适的值。在少数情况下，超参数也可以通过模型训练学出。本书对此类情况不做讨论。</p>
 <blockquote>
 <p>注：神经元图等地方基本也是看看，然后标量的原型偏导数用到了广播机制，具体不做赘述（也是因为没看懂），<a target="_blank" rel="noopener" href="https://zh.d2l.ai/chapter_deep-learning-basics/linear-regression.html">学完后回头再看此章节</a></p>
-</blockquote>
-<blockquote>
 <p>此节学到了几个英语名词和markdown公式用法，也不算没有收获。哈哈哈。</p>
 </blockquote>
-
+--></p>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/10/16/PyTorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/" style="float: left;">
+        ← PyTorch深度学习（四）
+    </a>
     
     
     <a class="pull-right" href="/2021/09/24/2-%E8%87%AA%E5%8A%A8%E6%B1%82%E6%A2%AF%E5%BA%A6/">
@@ -712,5 +712,20 @@
 
 
       
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

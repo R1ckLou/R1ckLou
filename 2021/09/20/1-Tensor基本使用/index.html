@@ -60,11 +60,7 @@
   
 
   <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --></head>
+</head>
 
 <!--
 <body class="post-template">
@@ -89,11 +85,13 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/PyTorch/" class="animsition-link">PyTorch<small>(3)</small></a></li>
+				    <li><a href="/categories/PyTorch/" class="animsition-link">PyTorch<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/日常/" class="animsition-link">日常<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/PyTorch/机器学习/" class="animsition-link">机器学习<small>(1)</small></a></li>
+				    <li><a href="/categories/PyTorch/机器学习/" class="animsition-link">机器学习<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/PyTorch/机器学习/深度学习/" class="animsition-link">深度学习<small>(1)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -186,17 +184,19 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h3 id="TyTorch深度学习-1–Tensor基本使用"><a href="#TyTorch深度学习-1–Tensor基本使用" class="headerlink" title="TyTorch深度学习 1–Tensor基本使用"></a>TyTorch深度学习 1–Tensor基本使用</h3><p><img src="/2021/09/20/1-Tensor%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/1.png" alt="图片"></p>
-<h4 id="1-创建"><a href="#1-创建" class="headerlink" title="1. 创建"></a>1. 创建</h4><table>
+      		<h3 id="TyTorch深度学习-1—Tensor基本使用"><a href="#TyTorch深度学习-1—Tensor基本使用" class="headerlink" title="TyTorch深度学习 1—Tensor基本使用"></a>TyTorch深度学习 1—Tensor基本使用</h3><p><img src="/.com//1.png" alt="图片"></p>
+<h4 id="1-创建"><a href="#1-创建" class="headerlink" title="1. 创建"></a>1. 创建</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>函数</th>
 <th>功能</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Tensor( sizes )</td>
-<td>基础构造函数</td>
+<td>　基础构造函数</td>
 </tr>
 <tr>
 <td>tensor( data, )</td>
@@ -238,13 +238,14 @@
 <td>randperm( m )</td>
 <td>随机排列</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p>这些创建方法都可以在创建的时候指定数据类型 <code>dtype</code>和存放 <code>device(cpu/gpu)</code>。</p>
 </blockquote>
 <p>使用时发现，函数传参中的 <code>size</code>  可以传入<code>Tensor</code>。例如<code>x</code> 为（5，3）的 <code>Tensor</code> 。设置一个全0的（5，3）可以直接　<code>zeros( x )</code>　从而得到。</p>
-<h4 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h4><h6 id="1）-算术操作"><a href="#1）-算术操作" class="headerlink" title="1） 算术操作"></a>1） 算术操作</h6><p><code>设 x , y 分别是一个Tensor</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 加法</span><br><span class="line"><span class="number">1.</span> x+y　<span class="number">2.</span> torch.add( x, y )　</span><br><span class="line"><span class="number">3.</span> y.add_( x )<span class="comment">#inplace方法</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-操作"><a href="#2-操作" class="headerlink" title="2. 操作"></a>2. 操作</h4><h6 id="1）-算术操作"><a href="#1）-算术操作" class="headerlink" title="1） 算术操作"></a>1） 算术操作</h6><p><code>设 x , y 分别是一个Tensor</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 加法</span><br><span class="line"><span class="number">1.</span> x+y　<span class="number">2.</span> torch.add( x, y )　</span><br><span class="line"><span class="number">3.</span> y.add_( x )<span class="comment">#inplace方法</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Pytorch操作inplace版本都有’ _ ‘,例如 <code>x.cop_(y) , x.t_( )</code></p>
 </blockquote>
@@ -252,6 +253,7 @@
 <blockquote>
 <p>索引操作不会开辟新内存</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -259,7 +261,8 @@
 <th>功能</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>index_select(input,    dim,    index)</td>
 <td>在指定维度dim上选取，比如选取某些行、某些列</td>
 </tr>
@@ -275,24 +278,28 @@
 <td>gather(input, dim, index)</td>
 <td>根据index，在dim维度上选取数据，输出的size与index一样</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h6 id="3）-变形"><a href="#3）-变形" class="headerlink" title="3） 变形"></a>3） 变形</h6><p>用　<code>view()</code>　来改变 <code>Tensor</code> 的形状。</p>
 <blockquote>
 <p><strong>注意</strong>：当使用　<code>view()</code>　时，新 <code>Tensor</code> 与旧 <code>Tensor</code> 共享内存，它将返回一个具有新形状的张量。返回的张量将与原始张量共享底层数据。<br>虽然共享<code>data</code>，但是依然是新的 <code>Tensor</code> （因为新<code>Tensor</code>除了包含<code>data</code>外还有一些其他属性），例如二者<code>id</code>(内存地址)不一样。<br><strong>如果</strong>想　<code>view()</code>　得到一个真正的副本（重塑目标张量）,方法有两种</p>
 <ul>
 <li><code>reshape()</code><br>但是<code>reshape()</code>不施加任何连续性约束，但也不保证数据共享。新张量可能是原始张量的视图，也可能完全是一个新张量。 故不推荐使用。<br>　<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49643225/whats-the-difference-between-reshape-and-view-in-pytorch">关于view()以及reshape()的区别，详情</a>
 　　</li>
-<li><code>原始张量 . clone()</code>然后进行<code> view()</code><br><code>clone() </code>　是复制一个副本。使用 <code>clone() </code>    还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源 Tensor    。</li>
+<li><code>原始张量 . clone()</code>然后进行<code>view()</code><br><code>clone()</code>　是复制一个副本。使用 <code>clone()</code>    还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源 Tensor    。</li>
 </ul>
 </blockquote>
-<h4 id="3-常用函数补充"><a href="#3-常用函数补充" class="headerlink" title="3. 常用函数补充"></a>3. 常用函数补充</h4><table>
+<h4 id="3-常用函数补充"><a href="#3-常用函数补充" class="headerlink" title="3. 常用函数补充"></a>3. 常用函数补充</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>函数</th>
 <th>功能</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>item</td>
 <td>使一个标量变成 Python number</td>
 </tr>
@@ -332,23 +339,19 @@
 <td>svd</td>
 <td>奇异值分解</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p>众多函数详情在<a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/tensors.html">官方文档</a>。</p>
 </blockquote>
-<h4 id="4-广播机制"><a href="#4-广播机制" class="headerlink" title="4. 广播机制"></a>4. 广播机制</h4><p>两个不同的<code>Tensor</code>按元素运算时，可能出发广播（broadcasting）机制，先适当复制元素使这两个 Tensor    形状相同后再按元素运算。例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.arange(<span class="number">1</span>,<span class="number">3</span>).view(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span> ( x )</span><br><span class="line">y = torch.arange(<span class="number">1</span>,<span class="number">4</span>).view(<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span> ( y )</span><br><span class="line"><span class="built_in">print</span> ( x + y )</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tensor([[<span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line">tensor([[<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>],</span><br><span class="line">        [<span class="number">3</span>]])</span><br><span class="line">tensor([[<span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">        [<span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        [<span class="number">4</span>, <span class="number">5</span>]])</span><br></pre></td></tr></table></figure>
-<p>由于<code>x</code>和<code>y</code>分别是1行2列和3行1列的，如果计算<code>x+y</code>，那么 <code>x</code>    中第一行的2个元素被广播（复制）到了第二行和第三行，而 <code>y</code>     中第一列的3个元素被广播（复制）到了第二列。如此，就可以对2个3行2列的矩阵按元素相加。</p>
+<h4 id="4-广播机制"><a href="#4-广播机制" class="headerlink" title="4. 广播机制"></a>4. 广播机制</h4><p>两个不同的<code>Tensor</code>按元素运算时，可能出发广播（broadcasting）机制，先适当复制元素使这两个 Tensor    形状相同后再按元素运算。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.arange(<span class="number">1</span>,<span class="number">3</span>).view(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span> ( x )</span><br><span class="line">y = torch.arange(<span class="number">1</span>,<span class="number">4</span>).view(<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span> ( y )</span><br><span class="line"><span class="built_in">print</span> ( x + y )</span><br></pre></td></tr></table></figure><br>输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tensor([[<span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line">tensor([[<span class="number">1</span>],</span><br><span class="line">        [<span class="number">2</span>],</span><br><span class="line">        [<span class="number">3</span>]])</span><br><span class="line">tensor([[<span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">        [<span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">        [<span class="number">4</span>, <span class="number">5</span>]])</span><br></pre></td></tr></table></figure><br>由于<code>x</code>和<code>y</code>分别是1行2列和3行1列的，如果计算<code>x+y</code>，那么 <code>x</code>    中第一行的2个元素被广播（复制）到了第二行和第三行，而 <code>y</code>     中第一列的3个元素被广播（复制）到了第二列。如此，就可以对2个3行2列的矩阵按元素相加。</p>
 <h4 id="5-Tensor和Numpy相互转换"><a href="#5-Tensor和Numpy相互转换" class="headerlink" title="5. Tensor和Numpy相互转换"></a>5. Tensor和Numpy相互转换</h4><p>使用 <code>from_numpy()</code> 将NumPy数组转换成 <code>Tensor</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a)</span><br></pre></td></tr></table></figure>
-
-
 <blockquote>
 <p><strong>注意</strong>：<br>所有在CPU上的 <code>Tensor</code>(除了<code>CharTensor</code>)都支持与NumPy数组相互转换。<br>还有一种方法就是直接用 <code>torch.tensor()</code> 将NumPy数组转换成 <code>Tensor</code>，需要注意的是该方法总是会进行数据拷贝，返回的  <code>Tensor</code>    和原来的数据不再共享内存。</p>
 </blockquote>
-<h4 id="6-Tensor-on-Gpu"><a href="#6-Tensor-on-Gpu" class="headerlink" title="6. Tensor on Gpu"></a>6. Tensor on Gpu</h4><p>用方法 <code>to()</code> 可以将 <code>Tensor </code> 在CPU和GPU之间相互移动</p>
+<h4 id="6-Tensor-on-Gpu"><a href="#6-Tensor-on-Gpu" class="headerlink" title="6. Tensor on Gpu"></a>6. Tensor on Gpu</h4><p>用方法 <code>to()</code> 可以将 <code>Tensor</code> 在CPU和GPU之间相互移动</p>
 <blockquote>
 <p>注：具体看<a target="_blank" rel="noopener" href="https://github.com/chenyuntc/pytorch-book/blob/master/chapter3-Tensor%E5%92%8Cautograd/Tensor.ipynb">官方文档的这里</a></p>
 </blockquote>
@@ -862,5 +865,20 @@
 
 
       
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
